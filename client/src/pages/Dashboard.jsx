@@ -53,7 +53,7 @@ function Dashboard() {
           navigate('/login');
           return;
         }
-        const response = await axios.get('habit_tracker.railway.internal/api/habits', getAuthHeaders());
+        const response = await axios.get('habittracker-production-8d4a.up.railway.app/api/habits', getAuthHeaders());
         setHabits(response.data);
       } catch (err) {
         if (err.response && err.response.status === 401) {
@@ -70,7 +70,7 @@ function Dashboard() {
     e.preventDefault();
     try {
       const newHabit = { title, identity, cue };
-      const response = await axios.post('habit_tracker.railway.internal/api/habits', newHabit, getAuthHeaders());
+      const response = await axios.post('habittracker-production-8d4a.up.railway.app/api/habits', newHabit, getAuthHeaders());
       setHabits([...habits, response.data]);
       setTitle(''); setIdentity(''); setCue('');
     } catch {
@@ -80,14 +80,14 @@ function Dashboard() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`habit_tracker.railway.internal/api/habits/${id}`, getAuthHeaders());
+      await axios.delete(`habittracker-production-8d4a.up.railway.app/api/habits/${id}`, getAuthHeaders());
       setHabits(habits.filter(habit => habit._id !== id));
     } catch (err) { console.error(err); }
   };
 
   const handleCheckIn = async (id) => {
     try {
-      const response = await axios.put(`habit_tracker.railway.internal/api/habits/${id}/checkin`, {}, getAuthHeaders());
+      const response = await axios.put(`habittracker-production-8d4a.up.railway.app/api/habits/${id}/checkin`, {}, getAuthHeaders());
       setHabits(habits.map(habit => habit._id === id ? response.data : habit));
     } catch (err) { console.error(err); }
   };

@@ -14,7 +14,7 @@ function Register() {
     e.preventDefault();
     try {
       // Call the register route
-      await axios.post('habit_tracker.railway.internal/api/auth/register', {
+      await axios.post('habittracker-production-8d4a.up.railway.app/api/auth/register', {
         name,
         email,
         password
