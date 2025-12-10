@@ -1,0 +1,242 @@
+/* --- VARIABLES & RESET --- */
+:root {
+  --primary: #4f46e5; /* Indigo */
+  --primary-hover: #4338ca;
+  --success: #10b981; /* Emerald */
+  --success-hover: #059669;
+  --danger: #ef4444;
+  --bg-color: #f3f4f6;
+  --card-bg: #ffffff;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --text-main: #111827; 
+  --circle-bg: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* --- DARK MODE VARIABLES --- */
+[data-theme='dark'] {
+  --bg-color: #111827;       /* Very dark blue/gray (Background) */
+  --card-bg: #1f2937;        /* Lighter dark gray (Cards) */
+  --text-main: #f9fafb;      /* Almost white (Text) */
+  --text-muted: #9ca3af;  
+     /* Light gray (Secondary text) */
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5); /* Darker shadows */
+  
+  --text-main: #f9fafb;
+  --circle-bg: #374151;
+  /* Input fields need specific dark colors */
+  --input-bg: #374151;
+  --input-border: #4b5563;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  color: var(--text-main);
+}
+
+button {
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- LAYOUT UTILITIES --- */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.app-title {
+  font-size: 28px;
+  background: linear-gradient(to right, var(--primary), #818cf8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* --- FORMS & INPUTS --- */
+.card {
+  background: var(--card-bg);
+  color: var(--text-main);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 15px;
+  /* Use the variable, but fallback to light colors if variable isn't set */
+  border: 2px solid var(--input-border, #e5e7eb); 
+  background-color: var(--input-bg, #ffffff);      
+  color: var(--text-main);
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s;
+  box-sizing: border-box;
+  color: var(--text-main);
+}
+
+input:focus {
+  border-color: var(--primary);
+}
+
+/* --- BUTTONS --- */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  width: 100%;
+}
+.btn-primary:hover { background-color: var(--primary-hover); }
+
+.btn-logout {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid #e5e7eb;
+}
+.btn-logout:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* --- HABIT LIST --- */
+.habit-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.habit-item {
+  background: var(--card-bg);
+  color: var(--text-main);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+}
+
+.habit-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* --- HABIT ITEM COMPLETED STATE --- */
+.habit-item.completed {
+  /* Use a variable or a semi-transparent green so it blends in Dark Mode */
+  background-color: rgba(16, 185, 129, 0.1); 
+  border-left: 5px solid var(--success);
+}
+
+.habit-info h4 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.habit-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.streak-badge {
+  color: #f59e0b; /* Amber */
+  font-weight: 700;
+  background: #fffbeb;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* --- ACTION BUTTONS --- */
+.btn-checkin {
+  background-color: #e5e7eb;
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.btn-checkin.done {
+  background-color: var(--success);
+  color: white;
+}
+
+.btn-checkin:hover { transform: scale(1.05); }
+
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: #d1d5db;
+  font-size: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.btn-delete:hover { color: var(--danger); }
+
+/* --- DASHBOARD LAYOUT --- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile: Stacked */
+  gap: 30px;
+  align-items: start; /* Ensures both columns start at the very top */
+}
+
+/* On screens larger than 900px (Tablets/Laptops) */
+@media (min-width: 900px) {
+  .dashboard-grid {
+    /* Left column 60%, Right column 40% */
+    grid-template-columns: 1.5fr 1fr; 
+  }
+
+  /* CRITICAL FIX: Prevents content from forcing the column too wide */
+  .main-content, .dashboard-sidebar {
+    min-width: 0; 
+  }
+  
+  /* Make the sidebar sticky so the graph follows you as you scroll */
+  .dashboard-sidebar {
+    position: sticky;
+    top: 20px;
+  }
+}
