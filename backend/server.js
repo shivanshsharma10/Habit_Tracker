@@ -12,7 +12,11 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: ["http://localhost:5173", "http://localhost:3000" , "https://habitshabit.netlify.app/dashboard"], // Allow your frontend (Check your port!)
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow these actions
+    credentials: true // Allow cookies/headers
+}));
 
 // Connect to Database
 mongoose.connect(process.env.MONGO_URI)
