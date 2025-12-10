@@ -13,7 +13,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use('/api/habits', habitRoutes);
+// app.use('/api/habits', habitRoutes);
 
 // Connect to Database
 mongoose.connect(process.env.MONGO_URI)
