@@ -80,14 +80,14 @@ function Dashboard() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://habittracker-production-8d4a.up.railway.app/${id}`, getAuthHeaders());
+      await axios.delete(`https://habittracker-production-8d4a.up.railway.app/api/habit$/{id}`, getAuthHeaders());
       setHabits(habits.filter(habit => habit._id !== id));
     } catch (err) { console.error(err); }
   };
 
   const handleCheckIn = async (id) => {
     try {
-      const response = await axios.put(`https://habittracker-production-8d4a.up.railway.app/${id}/checkin`, {}, getAuthHeaders());
+      const response = await axios.put(`https://habittracker-production-8d4a.up.railway.app/api/habit/${id}/checkin`, {}, getAuthHeaders());
       setHabits(habits.map(habit => habit._id === id ? response.data : habit));
     } catch (err) { console.error(err); }
   };
