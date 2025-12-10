@@ -12,7 +12,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('habittracker-production-8d4a.up.railway.app/api/auth/login', { email, password });
+      const response = await axios.post('https://habittracker-production-8d4a.up.railway.app/api/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
       navigate('/dashboard');
     } catch{
