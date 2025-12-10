@@ -14,7 +14,7 @@ function Register() {
     e.preventDefault();
     try {
       // Call the register route
-      await axios.post('http://localhost:5000/api/auth/register', {
+      await axios.post('habit_tracker.railway.internal/api/auth/register', {
         name,
         email,
         password
