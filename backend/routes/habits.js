@@ -5,6 +5,7 @@ const requireAuth = require('../middleware/requireAuth'); // Import the guard
 
 // Apply the guard to ALL routes in this file
 router.use(requireAuth);
+app.use('/api/habits', habitRoutes);
 
 // --- GET ALL HABITS (for the logged-in user) ---
 router.get('/', async (req, res) => {
