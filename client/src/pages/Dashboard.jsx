@@ -53,7 +53,7 @@ function Dashboard() {
           navigate('/login');
           return;
         }
-        const response = await axios.get('habit_tracker.railway.internal/api/habits', getAuthHeaders());
+        const response = await axios.get('https://habittracker-production-8d4a.up.railway.app/api/habits', getAuthHeaders());
         setHabits(response.data);
       } catch (err) {
         if (err.response && err.response.status === 401) {
@@ -70,7 +70,7 @@ function Dashboard() {
     e.preventDefault();
     try {
       const newHabit = { title, identity, cue };
-      const response = await axios.post('habit_tracker.railway.internal/api/habits', newHabit, getAuthHeaders());
+      const response = await axios.post('https://habittracker-production-8d4a.up.railway.app/api/habits', newHabit, getAuthHeaders());
       setHabits([...habits, response.data]);
       setTitle(''); setIdentity(''); setCue('');
     } catch {
